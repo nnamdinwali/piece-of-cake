@@ -1,0 +1,420 @@
+{
+	"payments": [
+		{
+			"id": "com.happygames.mergecafe.sku00099",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00099",
+				"title": "Super Mega Product #00099",
+				"description": "Super Mega Product #00099",
+				"amount": 20
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00099",
+				"amount": 20
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00199",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00199",
+				"title": "Super Mega Product #00199",
+				"description": "Super Mega Product #00199",
+				"amount": 40
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00199",
+				"amount": 40
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00299",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00299",
+				"title": "Super Mega Product #00299",
+				"description": "Super Mega Product #00299",
+				"amount": 60
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00299",
+				"amount": 60
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00399",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00399",
+				"title": "Super Mega Product #00399",
+				"description": "Super Mega Product #00399",
+				"amount": 80
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00399",
+				"amount": 80
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00499",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00499",
+				"title": "Super Mega Product #00499",
+				"description": "Super Mega Product #00499",
+				"amount": 100
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00499",
+				"amount": 100
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00599",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00599",
+				"title": "Super Mega Product #00599",
+				"description": "Super Mega Product #00599",
+				"amount": 120
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00599",
+				"amount": 120
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00699",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00699",
+				"title": "Super Mega Product #00699",
+				"description": "Super Mega Product #00699",
+				"amount": 140
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00699",
+				"amount": 140
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00799",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00799",
+				"title": "Super Mega Product #00799",
+				"description": "Super Mega Product #00799",
+				"amount": 160
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00799",
+				"amount": 160
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00899",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00899",
+				"title": "Super Mega Product #00899",
+				"description": "Super Mega Product #00899",
+				"amount": 180
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00899",
+				"amount": 180
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku00999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku00999",
+				"title": "Super Mega Product #00999",
+				"description": "Super Mega Product #00999",
+				"amount": 200
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku00999",
+				"amount": 200
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01099",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01099",
+				"title": "Super Mega Product #01099",
+				"description": "Super Mega Product #01099",
+				"amount": 220
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01099",
+				"amount": 220
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01199",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01199",
+				"title": "Super Mega Product #01199",
+				"description": "Super Mega Product #01199",
+				"amount": 240
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01199",
+				"amount": 240
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01299",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01299",
+				"title": "Super Mega Product #01299",
+				"description": "Super Mega Product #01299",
+				"amount": 260
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01299",
+				"amount": 260
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01399",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01399",
+				"title": "Super Mega Product #01399",
+				"description": "Super Mega Product #01399",
+				"amount": 280
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01399",
+				"amount": 280
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01499",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01499",
+				"title": "Super Mega Product #01499",
+				"description": "Super Mega Product #01499",
+				"amount": 300
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01499",
+				"amount": 300
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01599",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01599",
+				"title": "Super Mega Product #01599",
+				"description": "Super Mega Product #01599",
+				"amount": 320
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01599",
+				"amount": 320
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01699",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01699",
+				"title": "Super Mega Product #01699",
+				"description": "Super Mega Product #01699",
+				"amount": 340
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01699",
+				"amount": 340
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01799",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01799",
+				"title": "Super Mega Product #01799",
+				"description": "Super Mega Product #01799",
+				"amount": 360
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01799",
+				"amount": 360
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01899",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01899",
+				"title": "Super Mega Product #01899",
+				"description": "Super Mega Product #01899",
+				"amount": 380
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01899",
+				"amount": 380
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku01999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku01999",
+				"title": "Super Mega Product #01999",
+				"description": "Super Mega Product #01999",
+				"amount": 400
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku01999",
+				"amount": 400
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku02499",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku02499",
+				"title": "Super Mega Product #02499",
+				"description": "Super Mega Product #02499",
+				"amount": 500
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku02499",
+				"amount": 500
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku02999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku02999",
+				"title": "Super Mega Product #02999",
+				"description": "Super Mega Product #02999",
+				"amount": 600
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku02999",
+				"amount": 600
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku03499",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku03499",
+				"title": "Super Mega Product #03499",
+				"description": "Super Mega Product #03499",
+				"amount": 700
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku03499",
+				"amount": 700
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku03999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku03999",
+				"title": "Super Mega Product #03999",
+				"description": "Super Mega Product #03999",
+				"amount": 800
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku03999",
+				"amount": 800
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku04499",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku04499",
+				"title": "Super Mega Product #04499",
+				"description": "Super Mega Product #04499",
+				"amount": 900
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku04499",
+				"amount": 900
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku04999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku04999",
+				"title": "Super Mega Product #04999",
+				"description": "Super Mega Product #04999",
+				"amount": 1000
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku04999",
+				"amount": 1000
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku05999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku05999",
+				"title": "Super Mega Product #05999",
+				"description": "Super Mega Product #05999",
+				"amount": 1200
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku05999",
+				"amount": 1200
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku06999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku06999",
+				"title": "Super Mega Product #06999",
+				"description": "Super Mega Product #06999",
+				"amount": 1400
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku06999",
+				"amount": 1400
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku07999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku07999",
+				"title": "Super Mega Product #07999",
+				"description": "Super Mega Product #07999",
+				"amount": 1600
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku07999",
+				"amount": 1600
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku08999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku08999",
+				"title": "Super Mega Product #08999",
+				"description": "Super Mega Product #08999",
+				"amount": 1800
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku08999",
+				"amount": 1800
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku09999",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku09999",
+				"title": "Super Mega Product #09999",
+				"description": "Super Mega Product #09999",
+				"amount": 2000
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku09999",
+				"amount": 2000
+			}
+		},
+		{
+			"id": "com.happygames.mergecafe.sku88030",
+			"playgama": {
+				"id": "com.happygames.mergecafe.sku88030",
+				"title": "Super Mega Product #88030",
+				"description": "Super Mega Product #88030",
+				"amount": 6
+			},
+			"qa_tool": {
+				"id": "com.happygames.mergecafe.sku88030",
+				"amount": 6
+			}
+		}
+	]
+}
