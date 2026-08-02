@@ -61,22 +61,75 @@
 
         function transformUrl(urlStr) {
             if (urlStr.includes("cdn.mergecakegame.com/")) {
-                let path = urlStr.split("cdn.mergecakegame.com/")[1];
-                path = path.split("?")[0];
-                if (path.endsWith("manifest.json")) {
-                    return window.location.origin + "/config/v21.12/manifest.json";
+                let filePath = urlStr.split("cdn.mergecakegame.com/")[1];
+                filePath = filePath.split("?")[0];
+                // Build base path relative to the current page so this works from any URL prefix (e.g. /game/)
+                const href = window.location.href;
+                const pageBase = href.substring(0, href.lastIndexOf('/') + 1);
+                if (filePath.endsWith("manifest.json")) {
+                    return pageBase + "config/v21.12/manifest.json";
                 }
-                return window.location.origin + "/" + path;
+                return pageBase + filePath;
             }
             return urlStr;
         }
 
-        const mockResponse = {
-            status: "ok",
-            data: {},
-            timestamp: Math.floor(Date.now() / 1000),
-            time: Math.floor(Date.now() / 1000)
-        };
+        // Returns a realistic server response based on the endpoint being called.
+        // The game WASM checks these fields to decide if it should show the -9016 maintenance screen.
+        function getMockResponse(url) {
+            var now = Math.floor(Date.now() / 1000);
+            var uid = localStorage.getItem('poc_offline_uid');
+            if (!uid) {
+                uid = 'offline_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('poc_offline_uid', uid);
+            }
+            var base = { status: "ok", timestamp: now, time: now, server_time: now, is_maintenance: false };
+
+            // Login / auth / user profile endpoints
+            if (/\/(login|auth|session|user|profile|account|player|me)\b/i.test(url)) {
+                return Object.assign({}, base, { data: {
+                    uid: uid, user_id: uid, id: uid,
+                    token: "offline-token-" + uid,
+                    session: "offline-session",
+                    name: "Player",
+                    level: 1, exp: 0,
+                    soft_currency: 500, hard_currency: 50,
+                    energy: 50, max_energy: 50,
+                    is_new_player: false,
+                    is_maintenance: false,
+                    server_time: now,
+                    created_at: now - 86400 * 30
+                }});
+            }
+
+            // Game state / save / sync endpoints
+            if (/\/(state|sync|progress|save|load|data|snapshot)\b/i.test(url)) {
+                var savedState = null;
+                try { savedState = JSON.parse(localStorage.getItem('poc_game_state') || 'null'); } catch(e) {}
+                return Object.assign({}, base, { data: {
+                    uid: uid, server_time: now,
+                    state: savedState,
+                    is_maintenance: false
+                }});
+            }
+
+            // Config / meta / settings endpoints
+            if (/\/(config|settings|meta|remote_config|ab_test)\b/i.test(url)) {
+                return Object.assign({}, base, { data: { is_maintenance: false, server_time: now } });
+            }
+
+            // Leaderboard / social endpoints
+            if (/\/(leaderboard|friend|social|rating|rank)\b/i.test(url)) {
+                return Object.assign({}, base, { data: { entries: [], total: 0 } });
+            }
+
+            // Default: return a valid user identity so the game never sees an empty response
+            return Object.assign({}, base, { data: {
+                uid: uid, user_id: uid, id: uid,
+                is_maintenance: false,
+                server_time: now
+            }});
+        }
 
         // Intercept fetch
         const originalFetch = window.fetch;
@@ -84,7 +137,8 @@
             const urlStr = typeof url === 'string' ? url : url.url;
             if ((urlStr.includes("mergecakegame.com") || urlStr.includes("playgama.com")) && !urlStr.includes("cdn.mergecakegame.com")) {
                 log("Mocking fetch: " + urlStr);
-                return Promise.resolve(new Response(JSON.stringify(mockResponse), { status: 200, headers: { 'Content-Type': 'application/json' } }));
+                var resp = getMockResponse(urlStr);
+                return Promise.resolve(new Response(JSON.stringify(resp), { status: 200, headers: { 'Content-Type': 'application/json' } }));
             }
             const newUrl = transformUrl(urlStr);
             if (newUrl !== urlStr) {
@@ -110,10 +164,12 @@
             const url = this._url;
             if ((url.includes("mergecakegame.com") || url.includes("playgama.com")) && !url.includes("cdn.mergecakegame.com")) {
                 log("Mocking XHR " + this._method + ": " + url);
+                var resp = getMockResponse(url);
+                var respStr = JSON.stringify(resp);
                 Object.defineProperty(this, 'status', { value: 200 });
                 Object.defineProperty(this, 'readyState', { value: 4 });
-                Object.defineProperty(this, 'responseText', { value: JSON.stringify(mockResponse) });
-                Object.defineProperty(this, 'response', { value: JSON.stringify(mockResponse) });
+                Object.defineProperty(this, 'responseText', { value: respStr });
+                Object.defineProperty(this, 'response', { value: respStr });
                 if (this.onload) this.onload();
                 if (this.onreadystatechange) this.onreadystatechange();
                 return;
