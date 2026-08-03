@@ -140,14 +140,26 @@
             }});
         }
 
+        // Route game API calls through our server proxy so we can log the exact URLs
+        // and return properly-formatted responses.
+        var PROXY_BASE = window.location.origin + '/api/game-proxy?url=';
+
+        function isGameApiUrl(u) {
+            return (u.includes("mergecakegame.com") || u.includes("playgama.com")) &&
+                   !u.includes("cdn.mergecakegame.com");
+        }
+
         // Intercept fetch
         const originalFetch = window.fetch;
         window.fetch = function(url, options) {
-            const urlStr = typeof url === 'string' ? url : url.url;
-            if ((urlStr.includes("mergecakegame.com") || urlStr.includes("playgama.com")) && !urlStr.includes("cdn.mergecakegame.com")) {
-                log("Mocking fetch: " + urlStr);
-                var resp = getMockResponse(urlStr);
-                return Promise.resolve(new Response(JSON.stringify(resp), { status: 200, headers: { 'Content-Type': 'application/json' } }));
+            const urlStr = typeof url === 'string' ? url : (url && url.url ? url.url : String(url));
+            if (isGameApiUrl(urlStr)) {
+                log("Proxying fetch: " + urlStr);
+                return originalFetch(PROXY_BASE + encodeURIComponent(urlStr), {
+                    method: (options && options.method) || 'GET',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: (options && options.body) || undefined,
+                });
             }
             const newUrl = transformUrl(urlStr);
             if (newUrl !== urlStr) {
@@ -157,32 +169,25 @@
             return originalFetch(url, options);
         };
 
-        // Intercept XMLHttpRequest
+        // Intercept XMLHttpRequest — route game API calls through proxy
         const originalOpen = XMLHttpRequest.prototype.open;
         const originalSend = XMLHttpRequest.prototype.send;
         XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
-            this._url = url;
+            this._url = String(url);
             this._method = method;
-            const newUrl = transformUrl(url);
-            if (newUrl !== url) {
-                log("Redirecting XHR: " + url + " -> " + newUrl);
+            if (isGameApiUrl(this._url)) {
+                this._proxyUrl = PROXY_BASE + encodeURIComponent(this._url);
+                log("Proxying XHR " + method + ": " + this._url);
+                return originalOpen.apply(this, [method, this._proxyUrl, async, user, password]);
             }
-            return originalOpen.apply(this, [method, newUrl, async, user, password]);
+            const newUrl = transformUrl(this._url);
+            if (newUrl !== this._url) {
+                log("Redirecting XHR: " + this._url + " -> " + newUrl);
+                return originalOpen.apply(this, [method, newUrl, async, user, password]);
+            }
+            return originalOpen.apply(this, [method, url, async, user, password]);
         };
         XMLHttpRequest.prototype.send = function(body) {
-            const url = this._url;
-            if ((url.includes("mergecakegame.com") || url.includes("playgama.com")) && !url.includes("cdn.mergecakegame.com")) {
-                log("Mocking XHR " + this._method + ": " + url);
-                var resp = getMockResponse(url);
-                var respStr = JSON.stringify(resp);
-                Object.defineProperty(this, 'status', { value: 200 });
-                Object.defineProperty(this, 'readyState', { value: 4 });
-                Object.defineProperty(this, 'responseText', { value: respStr });
-                Object.defineProperty(this, 'response', { value: respStr });
-                if (this.onload) this.onload();
-                if (this.onreadystatechange) this.onreadystatechange();
-                return;
-            }
             return originalSend.apply(this, [body]);
         };
     })();
