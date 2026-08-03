@@ -59,6 +59,15 @@
         
         window.playgamaBridge = window.bridge;
 
+        // video_rec.js declares negotiateConnectionWithClientOffer with `let` (not var),
+        // so it never lands on window — the startup check sees undefined and retry-loops.
+        // Pre-stub it here so the check passes on the very first load.
+        window.negotiateConnectionWithClientOffer = window.negotiateConnectionWithClientOffer || function() {};
+        // Defensive stubs for the other required globals in case any file uses let/const
+        window.adapter          = window.adapter          || {};
+        window.platform_utils   = window.platform_utils   || {};
+        window.FileLoader       = window.FileLoader       || {};
+
         function transformUrl(urlStr) {
             if (urlStr.includes("cdn.mergecakegame.com/")) {
                 let filePath = urlStr.split("cdn.mergecakegame.com/")[1];
